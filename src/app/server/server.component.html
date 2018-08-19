@@ -1,0 +1,29 @@
+<input matInput type="text" [(ngModel)]="name">
+<p>{{ name }}</p>
+
+<p>{{ serverId }}</p>
+
+<p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{online: getColor()==='green'}">{{ getServerStatus() }}</p>
+
+<button mat-raised-button color="primary" [disabled]="allowNewServer" (click)="onCreateServer()" >Add Server</button>
+<p [innerText]="allowNewServer"></p>
+<p  *ngIf="serverCreated; else noServer">{{serverCreationStatus}}</p>
+<ng-template  #noServer> <p>{{serverCreationStatus}}</p> </ng-template>
+
+<p  *ngIf="serverCreated">{{serverCreationStatus}}</p>
+<p *ngFor="let 2 of servers">{{serverCreationStatus}}</p>
+
+<!-- <label>Server Name</label>
+<input type="text" matInput (input)="onUpdateServerName($event)">
+<p>{{ serverName }}</p> -->
+
+
+<input type="text" [(ngModel)]="serverName" placeholder="serverName">
+<p>{{ serverName }}</p>
+
+<mat-form-field>
+    <input matInput type="text" placeholder="username" [(ngModel)]="username" >
+</mat-form-field>
+<p>{{username}}</p>
+
+<button mat-raised-button color="accent" [disabled]="!username" (click)="deleteUserName()" >Delete Username!</button>
